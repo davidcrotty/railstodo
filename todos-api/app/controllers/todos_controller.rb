@@ -6,7 +6,8 @@ class TodosController < ApplicationController
 
   # POST todos
   def create
-    Todo.create!(title: 'test', created_by: 'david')
+    params.permit(:title, :created_by)
+    Todo.create(title: params[:title], created_by: params[:created_by])
     render status: :ok
   end
 
@@ -22,4 +23,5 @@ class TodosController < ApplicationController
     Todo.find(params[:id]).destroy
     render(status: :ok)
   end
+
 end
