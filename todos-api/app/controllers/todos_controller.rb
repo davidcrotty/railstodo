@@ -1,7 +1,8 @@
 # Todos Controller
 class TodosController < ApplicationController
   def index
-    render json: { it: 'works' }
+    file = File.read(Rails.root + 'supporting_files/mock_data.json')
+    render json: file
   end
 
   # POST todos
