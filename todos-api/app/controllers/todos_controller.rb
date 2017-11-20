@@ -1,6 +1,5 @@
 # Todos Controller
 class TodosController < ApplicationController
-  include Swagger::Docs::Methods
 
   swagger_controller :todos, 'Todos Management'
 
@@ -13,6 +12,7 @@ class TodosController < ApplicationController
     response :success
     response :unprocessable_entity
   end
+  
   def index
     file = File.read(Rails.root + 'supporting_files/mock_data.json')
     render json: file
